@@ -1,44 +1,42 @@
 package com.thoughtworks.capability.gtb.demospringconfig;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
+
+import javax.validation.constraints.AssertTrue;
+import java.util.List;
+import java.util.Map;
+import java.util.PrimitiveIterator;
+
+@Data
+@Configuration
 @ConfigurationProperties("mail")
 public class MailConfig {
 
     private String hostname;
     private int port;
     private String from;
-
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
+    private List<String> defaultRecipients;
+    private Map<String, String> additionalHeaders;
+    private Credentials credentials;
 
     @Override
     public String toString() {
-        return "MailConfig{" +
-                "hostname='" + hostname + '\'' +
-                ", port=" + port +
-                ", from='" + from + '\'' +
-                '}';
+      String mailConfig =   "MailConfig{" +
+          "hostname='" + hostname + '\'' +
+          ", port=" + port +
+          ", from='" + from + '\'' +
+          ", defaultRecipients='" + defaultRecipients.toString() + '\'' +
+          ", additionalHeaders='" + additionalHeaders.toString() + '\'' +
+          ", credentials{" +
+          "username='" + credentials.getUsername()  + '\'' +
+          ", password='" + credentials.getPassword()  + '\'' +
+          ", authMethod='" + credentials.getAuthMethod()  + '\'' +
+          "}}";
+
+      return mailConfig;
+
     }
 }
