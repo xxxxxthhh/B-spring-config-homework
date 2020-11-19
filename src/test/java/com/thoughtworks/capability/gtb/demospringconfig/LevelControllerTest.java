@@ -16,9 +16,9 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@SpringBootTest
+@SpringBootTest(properties = "levelNumber=10")
 @AutoConfigureMockMvc
-@ActiveProfiles("dev")
+// @ActiveProfiles("dev")
 class LevelControllerTest {
 
   @Autowired
