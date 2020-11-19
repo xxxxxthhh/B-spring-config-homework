@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.xml.stream.Location;
 
 @RestController
-@Configurable
-@PropertySource("classpath:application-dev.properties")
 public class LevelController {
 
     @Value("${levelNumber}")
